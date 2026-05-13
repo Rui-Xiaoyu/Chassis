@@ -202,7 +202,7 @@ class Omni {
     LibXR::Topic::ASyncSubscriber<Referee::ChassisPack> referee_suber(
         "chassis_ref");
     LibXR::Topic::ASyncSubscriber<LibXR::EulerAngle<float>> euler_suber(
-        "ahrs_euler");
+        "gimbal_euler");
     LibXR::Topic::ASyncSubscriber<float> yawmotor_angle_suber("yawmotor_angle");
     LibXR::Topic::ASyncSubscriber<float> pitchmotor_angle_suber(
         "pitchmotor_angle");
