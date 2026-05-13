@@ -205,7 +205,7 @@ class Omni {
         "gimbal_euler");
     LibXR::Topic::ASyncSubscriber<float> yawmotor_angle_suber("yawmotor_angle");
     LibXR::Topic::ASyncSubscriber<float> pitchmotor_angle_suber(
-        "pitchmotor_angle");
+        "rollmotor_angle");
 
     cmd_suber.StartWaiting();
     referee_suber.StartWaiting();
@@ -231,9 +231,9 @@ class Omni {
       if (euler_suber.Available()) {
         omni->euler_ = euler_suber.GetData();
         euler_suber.StartWaiting();
-        omni->imu_pitch_ = -(omni->euler_.Pitch());
-        omni->imu_roll_ = -(omni->euler_.Roll());
-        omni->imu_yaw_ = omni->euler_.Yaw();
+        omni->imu_pitch_ = (omni->euler_.Roll());
+        omni->imu_roll_ = -(omni->euler_.Pitch());
+        omni->imu_yaw_ = -(omni->euler_.Yaw());
       }
 
       if (yawmotor_angle_suber.Available()) {
